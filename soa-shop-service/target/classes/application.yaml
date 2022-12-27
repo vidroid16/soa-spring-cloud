@@ -1,0 +1,17 @@
+server:
+  port: 8183
+spring:
+  application:
+    name: shop-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+  config:
+    import: configserver:config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:32001/eureka}
+

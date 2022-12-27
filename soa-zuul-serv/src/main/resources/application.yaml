@@ -1,0 +1,26 @@
+
+spring:
+  application:
+    name: 'zuul-server'
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:32001/eureka}
+  instance:
+    preferIpAddress: true
+zuul:
+  routes:
+    second-service-api:
+      path: /second-service/**
+      url: http://localhost:32181
+      stripPrefix: false
+    test-service-route:
+      path: /test-service/**
+      serviceId: test-service
+    shop-service-route:
+      path: /**
+      serviceId: shop-service
+  ignored-services: '*'
+ribbon:
+  ReadTimeout: 60000
+

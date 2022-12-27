@@ -1,0 +1,17 @@
+server:
+  port: 8181
+spring:
+  application:
+    name: test-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: valera-config-server
+  config:
+    import: configserver:valera-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:32001/eureka}
+
